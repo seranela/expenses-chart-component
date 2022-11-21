@@ -131,6 +131,11 @@ h1 {
   filter: brightness(150%) contrast(70%);
 }
 
+.bar > span {
+  background-color: white;
+  color: black;
+}
+
 .bar-popup {
   position: absolute;
   padding: 0.4em 0.5em;

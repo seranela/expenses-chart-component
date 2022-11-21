@@ -31,6 +31,8 @@ function processData(json) {
     let bar = document.getElementById(json[i].day);
     // Get quotient of maxBarAmount and then convert quotient to percentage for display
     bar.style.height = (((json[i].amount + 1) / maxBarAmount) * 100) + '%';
+    let barLabel = bar.children[0];
+    barLabel.innerHTML = shortDayToLong(json[i].day) + ' $' + json[i].amount;
     //bar.setAttribute('aria-label', shortDayToLong(json[i].day) + ' $' + json[i].amount);
 
     // Create the bar popup text and append to DOM
