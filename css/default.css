@@ -123,6 +123,10 @@ h1 {
   transition: filter 0.2s;
 }
 
+.bar:focus {
+  outline: 3px solid black;
+}
+
 .bar:hover {
   filter: brightness(150%) contrast(70%);
 }

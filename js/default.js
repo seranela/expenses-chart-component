@@ -7,6 +7,18 @@ const bars = document.querySelectorAll('#mon, #tue, #wed, #thu, #fri, #sat, #sun
 // Mouseover overlay divs that hold amounts
 let popups = [];
 
+function shortDayToLong(shortDay) {
+  switch (shortDay) {
+    case 'mon': return 'Monday';
+    case 'tue': return 'Tuesday';
+    case 'wed': return 'Wednesday';
+    case 'thu': return 'Thursday';
+    case 'fri': return 'Friday';
+    case 'sat': return 'Saturday';
+    case 'sun': return 'Sunday';
+  }
+}
+
 // Process JSON data into chart
 function processData(json) {
   // Set the chart bar max size rounded up to the nearest tenth
@@ -19,7 +31,9 @@ function processData(json) {
     let bar = document.getElementById(json[i].day);
     // Get quotient of maxBarAmount and then convert quotient to percentage for display
     bar.style.height = (((json[i].amount + 1) / maxBarAmount) * 100) + '%';
+    bar.setAttribute('aria-label', shortDayToLong(json[i].day) + ' $' + json[i].amount);
 
+    // Create the bar popup text and append to DOM
     popups[i] = document.createElement('div');
     popups[i].id = json[i].day + '-popup';
     popups[i].classList.add('bar-popup');
