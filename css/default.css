@@ -151,7 +151,7 @@ h1 {
   background-color: var(--color-primary-cyan-alt);
 }
 
-.days > label {
+.days > span {
   flex: 1;
   text-align: center;
   font-size: 0.8rem;
