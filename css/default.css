@@ -1,0 +1,271 @@
+:root {
+  --color-primary-soft-red: hsl(10, 79%, 65%);
+  --color-primary-soft-red-alt: hsl(10, 59%, 48%); /* WCGA-AA Corrected */
+  --color-primary-cyan: hsl(186, 34%, 60%);
+  --color-primary-cyan-alt: hsl(186, 59%, 48%); /* To match the Sat/Lum of red */
+  --color-neutral-dark-brown: hsl(25, 47%, 15%);
+  --color-neutral-medium-brown: hsl(28, 10%, 53%);
+  --color-neutral-medium-brown-alt: hsl(28, 10%, 45%);
+  --color-neutral-cream: hsl(27, 66%, 92%);
+  --color-neutral-extra-pale-orange: hsl(33, 100%, 98%);
+  --font-family: 'DM Sans', sans-serif; /* 400, 700 */
+}
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font: 400 1.125rem var(--font-family);
+  background-color: var(--color-neutral-cream);
+  color: white;
+  min-height: 100vh;
+  margin: 0;
+  padding: 1rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  min-width: 18rem; /* To keep the chart from getting too squishy */
+  max-width: 34rem;
+}
+
+h1,
+h2 {
+  margin-top: 0;
+}
+
+/* Rid of contrast complaint for SR-only heading */
+h1 {
+  color: var(--color-neutral-dark-brown);
+}
+
+/* Top */
+
+.top,
+.middle {
+  border-radius: 12px;
+  padding: 1.2rem;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--color-primary-soft-red-alt);
+  color: var(--color-neutral-extra-pale-orange);
+}
+
+.top h2 {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 0.2em;
+}
+
+.top p {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.top img {
+  width: 3.75rem;
+}
+
+/* Middle */
+
+.middle {
+  background-color: var(--color-neutral-extra-pale-orange);
+  color: var(--color-neutral-dark-brown);
+}
+
+.middle > h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+}
+
+/* Chart */
+
+.chart {
+  padding-bottom: 1.2rem;
+}
+
+.bars,
+.days {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.bars {
+  align-items: flex-end;
+  height: 10rem;
+  padding-bottom: 0.5em;
+}
+
+.bar {
+  border-radius: 3px;
+  background-color: var(--color-primary-soft-red-alt);
+  width: 100%;
+  height: 0;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.bar:hover {
+  filter: brightness(150%) contrast(70%);
+}
+
+.bar-popup {
+  position: absolute;
+  padding: 0.4em 0.5em;
+  font-size: 0.9rem;
+  text-align: center;
+  background-color: var(--color-neutral-dark-brown);
+  color: var(--color-neutral-extra-pale-orange);
+  border-radius: 6px;
+  transition: opacity 0.2s;
+  opacity: 0;
+}
+
+.bar-popup-show {
+  opacity: 1;
+}
+
+.current {
+  background-color: var(--color-primary-cyan-alt);
+}
+
+.days > label {
+  flex: 1;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+/* Bottom */
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--color-neutral-medium-brown-alt);
+}
+
+.bottom-right {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.bottom > p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.bottom span {
+  display: block;
+}
+
+.bottom-label {
+  color: var(--color-neutral-medium-brown-alt);
+}
+
+.bottom-dollars {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-top: 0.1em;
+  color: var(--color-neutral-dark-brown);
+}
+
+.bottom-percentage {
+  font-weight: 700;
+  color: var(--color-neutral-dark-brown);
+}
+
+/* Screen readers */
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+
+/* Responsive media queries */
+
+@media (min-width: 576px) {
+  .top,
+  .middle {
+    border-radius: 20px;
+    padding: 1.9rem;
+  }
+
+  .top h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.2em;
+  }
+
+  .top p {
+    font-size: 2rem;
+  }
+  
+  .top img {
+    width: 4.5rem;
+  }
+
+  .middle > h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+  }
+
+  .chart {
+    padding-bottom: 1.8rem;
+  }
+
+  .bars,
+  .days {
+    gap: 1rem;
+  }
+
+  .bar {
+    border-radius: 6px;
+  }
+
+  .bar-popup {
+    font-size: 1rem;
+  }
+
+  .days > label {
+    font-size: 1rem;
+  }
+
+  .bottom {
+    padding-top: 1.8rem;
+  }
+
+  .bottom > p {
+    font-size: 1.1rem;
+  }
+
+  .bottom-dollars {
+    font-size: 2.8rem;
+  }
+}
